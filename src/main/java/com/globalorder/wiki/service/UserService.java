@@ -15,22 +15,23 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-//    public UserService(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-
     @Transactional
-    public Long join(UserEntity userEntity) {
-        checkDuplicateUser(userEntity);
-        userRepository.save(userEntity);
-        return userEntity.getId();
-    }
-
-    private void checkDuplicateUser(UserEntity userEntity) {
+    public String join(UserEntity userEntity) {
         List<UserEntity> findUserEntityName = userRepository.findByName(userEntity.getName());
         if (!findUserEntityName.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+            return "이미 존재하는 회원입니다.";
         }
+        userRepository.save(userEntity);
+        return "회원 가입 완료.";
+    }
+
+    @Transactional
+    public String logIN(String email, String password) {
+        List<UserEntity> findUserEntity = userRepository.findByEmailPassword(email, password);
+        if (!findUserEntity.isEmpty()) {
+            return "로그인 성공";
+        }
+        return "로그인 실패";
     }
 
     public List<UserEntity> findUsers() {

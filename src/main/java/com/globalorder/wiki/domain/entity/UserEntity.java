@@ -3,7 +3,6 @@ package com.globalorder.wiki.domain.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -25,8 +24,4 @@ public class UserEntity {
 
     @Column(length = 10, nullable = false)
     private String name;
-
-
-    //private String session_key;
-    //private Timestamp session_limit;
 }

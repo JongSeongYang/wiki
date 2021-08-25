@@ -23,7 +23,14 @@ public class UserRepository {
     }
 
     public List<UserEntity> findAll() {
-        return em.createQuery("select u from UserEntity ser u", UserEntity.class)
+        return em.createQuery("select u from UserEntity u", UserEntity.class)
+                .getResultList();
+    }
+
+    public List<UserEntity> findByEmailPassword(String email, String password) {
+        return em.createQuery("select u from UserEntity u where u.email =:email and u.password=:password", UserEntity.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
                 .getResultList();
     }
 

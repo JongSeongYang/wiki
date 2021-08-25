@@ -29,5 +29,4 @@ public class BoardEntity {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
-
 }
