@@ -16,16 +16,13 @@ import java.sql.Timestamp;
 public class BoardEntity {
 
     @Id @GeneratedValue
-    private String id;
+    private Long id;
 
     @Column(length = 50,nullable = false)
     private String title;
 
     @Column(length = 10, nullable = false)
     private String author;
-
-    @UpdateTimestamp
-    private Timestamp date;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
