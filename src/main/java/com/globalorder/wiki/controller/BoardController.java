@@ -32,9 +32,9 @@ public class BoardController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/delete")
-    public ResponseEntity<Board.ResponseMessage> deleteContent(@RequestParam("title") String title) {
-        String message = boardService.deleteContent(title);
+    @PostMapping("/delete")
+    public ResponseEntity<Board.ResponseMessage> deleteContent(@RequestBody Board.deleteRequest id) {
+        String message = boardService.deleteContent(id.getId());
         val response = Board.ResponseMessage.builder()
                 .message(message)
                 .build();

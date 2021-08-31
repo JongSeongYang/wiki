@@ -25,8 +25,8 @@ public class BoardService {
     }
 
     @Transactional
-    public String deleteContent(String title) {
-        BoardEntity boardEntity = boardRepository.findByTitle(title);
+    public String deleteContent(Long id) {
+        BoardEntity boardEntity = boardRepository.findById(id).get();
         boardRepository.delete(boardEntity);
         return "글 삭제 완료.";
     }

@@ -22,6 +22,7 @@ public class Board {
     @AllArgsConstructor
     @Builder
     public static class Response {
+        private String id;
         private String title;
         private String author;
         private String content;
@@ -32,11 +33,17 @@ public class Board {
     @AllArgsConstructor
     @Builder
     public static class Request {
+        private Long id;
         private String title;
         private String author;
         private String content;
     }
 
-
-
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class deleteRequest {
+        private Long id;
+    }
 }
